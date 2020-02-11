@@ -10,19 +10,30 @@ import './App.css';
 
 class Title extends Component {
   render() {
-    return <h2>{this.props.title}</h2>  
+    return <h2>{this.props.text}</h2>  
   }
+}
+
+Title.defaultProps = {
+  text: 'Default title'
 }
 
 class Text extends Component {
   render() {
-    // const booleanText = this.props.boolean ? 'True' : 'False'
-    const mappedNumbers = this.props.arrayOfNumber.map(n => n * 2)
+    const {
+      arrayOfNumbers,
+      multiply,
+      objectWithInfo,
+      title
+    } = this.props
+    
+    const mappedNumbers = arrayOfNumbers.map(multiply)
 
     return (
       <div>
+        {title}
         <p>{mappedNumbers.join(', ')}</p>
-        <p>{this.props.objectWithInfo.key}</p>
+        <p>{objectWithInfo.key}</p>
       </div>
     )
   }
@@ -33,13 +44,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Title title="Welcome to React" />
+        <Title text="Welcome to React" />
         <Text
-          arrayOfNumber={[1, 2, 3]}
-          boolean={true}
-          number={1}
+          arrayOfNumbers={[1, 2, 3]}
+          multiply={(number) => number * 4}
+          number={2}
           objectWithInfo={{key: 'value'}}
           text="Hello world!"
+          title={<h1>This is the title</h1>}
         />
       </header>
     </div>
