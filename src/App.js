@@ -39,6 +39,31 @@ class Text extends Component {
   }
 }
 
+class Counter extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { counter: this.props.start }
+    setInterval(() => {
+      this.setState({  counter: this.state.counter + 1 })
+    }, 1000)
+  }
+
+  render() {
+    return <NumberCounter number={this.state.counter} />
+  }
+}
+
+Counter.defaultProps = {
+  start: 0
+}
+
+class NumberCounter extends Component {
+  render() {
+    console.log('NUmberCounter render()')
+    return <span>{this.props.number}</span>
+  }
+}
+
 function App() {
   return (
     <div className="App">
@@ -53,6 +78,7 @@ function App() {
           text="Hello world!"
           title={<h1>This is the title</h1>}
         />
+        <Counter start={100} />
       </header>
     </div>
   );
