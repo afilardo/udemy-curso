@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Forms from './sections/forms'
 
 
 class App extends Component {
@@ -25,13 +26,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h4>Events</h4>
-          <button onClick={this.handleClick}>Hi there!</button>
-          <div 
-            onMouseMove={this.handleMouseMove}
-            style={{ border: '1px solid #000', marginTop: 10, padding: 10}}>
-            <p>{this.state.mouseX}, {this.state.mouseY}</p>
-          </div>
+          <Forms />
         </header>
       </div>
     );
